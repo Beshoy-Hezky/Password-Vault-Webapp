@@ -1,0 +1,43 @@
+hr{
+    padding: 0px;
+    margin: 0px;
+    background-color: black
+}
+
+.header-title{
+    font-size: 1.6em;
+    font-weight: 200;
+    margin-right: 10px;
+    text-decoration: none
+  }
+
+.title{
+    font-size: 55px;
+    font-weight: lighter
+}
+
+.header {
+  padding: 70px;
+  text-align: center;
+  background: #dcc3b3;
+  color: black;
+  font-size: 18px;
+}
+
+.about-us {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.header2 {
+  padding: 70px;
+  text-align: center;
+  background: #937e71;
+  color: black;
+  font-size: 18px;
+}
+
+.title2 {
+    font-size: 55px;
+    font-weight: bolder;
+}
