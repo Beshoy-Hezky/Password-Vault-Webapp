@@ -4,7 +4,7 @@ A webapp that will take care of remembering your passwords and keeping them secu
 # Product Backlog
 
 - | Id | Feature title                                    | Start     |    End    |   Status    |
-- | 01 | About us Page introducing the app                | 17-7-2023 |           |  Incomplete |
+- | 01 | About us Page introducing the app                | 17-7-2023 | 18-7-2023 |  Complete   |
 - | 02 | Login and register page and navbar               | 17-7-2023 |           |  Incomplete |
 - | 03 | Add password and according website               | 17-7-2023 |           |  Incomplete |
 - | 04 | Encrypt password inside database                 | 17-7-2023 |           |  Incomplete |
