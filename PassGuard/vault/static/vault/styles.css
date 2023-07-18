@@ -19,7 +19,8 @@ hr{
 .header {
   padding: 70px;
   text-align: center;
-  background: #dcc3b3;
+
+    background-color: #8FC9A3;
   color: black;
   font-size: 18px;
 }
@@ -40,4 +41,17 @@ hr{
 .title2 {
     font-size: 55px;
     font-weight: bolder;
+}
+
+.cool-button {
+  background-color: #8FC9A3;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 15px;
+  font-size: 15px;
+}
+
+.cool-button:hover {
+  background-color: #79B88B;
 }
