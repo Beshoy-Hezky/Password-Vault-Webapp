@@ -76,6 +76,7 @@ hr{
 }
 
 .card{
+    border-width: 2px;
     max-width: 18rem;
     display: inline-block;
     margin-right: 15px;
