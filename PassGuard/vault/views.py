@@ -1,3 +1,4 @@
+from cryptography.fernet import Fernet
 from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect
@@ -15,11 +16,20 @@ def index(request):
 
 def about_us(request):
     return render(request, "vault/aboutus.html")
+
+
+def login_after_register(request):
+    login(request, request.user)
+    return HttpResponseRedirect(reverse("index"))
+
+
 def login_view(request):
     if request.method == "POST":
         # Attempt to sign user in
         username = request.POST["username"]
+        print(username)
         password = request.POST["password"]
+        print(password)
         user = authenticate(request, username=username, password=password)
 
         # Check if authentication successful
@@ -58,9 +68,14 @@ def register(request):
             user = User.objects.create_user(username, email, password)
             user.save()
         except IntegrityError:
-            return render(request, "auctions/register.html", {
+            return render(request, "vault/register.html", {
                 "message": "Username already taken.",
             })
+        key = Fernet.generate_key()
+        string_key = key.decode('utf-8')
+        return render(request, "vault/masterkey.html", {
+            "masterkey": string_key,
+        })
         login(request, user)
         return HttpResponseRedirect(reverse("index"))
     else:

@@ -1,0 +1,10 @@
+{% extends "vault/layout.html" %}
+
+{% block body %}
+<div class="header" style="background-color: white">
+    <h1 class="title">Your MasterKey is:</h1>
+    <p>{{masterkey}}</p>
+    <h4>You have to save this master key somewhere safe (notepad on you computer or a physical copy)</h4>
+    <a href="{% url 'login' %}"><button class="btn btn-primary">Go to Login</button></a>
+    </div>
+{% endblock %}
