@@ -94,3 +94,7 @@ hr{
     margin-bottom: 15px;
     margin-left: 15px;
 }}
+
+input:focus::placeholder {
+  color: transparent;
+}
