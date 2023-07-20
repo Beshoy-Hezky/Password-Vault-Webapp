@@ -22,7 +22,10 @@
                 {% if user.is_authenticated %}
                 <a href="{% url 'index' %}" class="header-title" style="text-decoration: none; color: black;">PassGuard</a>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'index' %}">About us<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{% url 'index' %}">Passwords<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about_us' %}">About us<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'logout' %}">Log Out <span class="sr-only">(current)</span></a>

@@ -1,0 +1,44 @@
+{% extends "vault/layout.html" %}
+{% block body %}
+{% load static %}
+
+    <div style="margin: 25px;">
+        <h1 class="title" style="font-size: 35px;">{{request.user.username}}'s passwords:</h1>
+<div class="card-deck">
+
+
+<div class="card" >
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <h6 class="card-subtitle mb-2 text-muted">www.gmail.com</h6>
+    <p class="card-text">WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+        WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+    </p>
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+  </div>
+</div>
+
+    <div class="card" >
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+    <p class="card-text">Some quick example text to build on the card title d's content.</p>
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+  </div>
+</div>
+
+        <a href="#" class="card" style="max-width: 18rem; display: inline-block">
+  <div class="card-body" style="text-align: center">
+  <h6>Add a password</h6>
+      <img src="{% static 'download.png' %}" alt="plus-image" class="plus-image">
+  </div>
+</a>
+
+
+
+
+    </div>
+    </div>
+{% endblock %}

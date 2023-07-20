@@ -7,6 +7,9 @@
     by providing a secure and user-friendly password management solution. We aim to simplify the
     process of password management, enhance data privacy, and promote strong security practices
     to safeguard sensitive information across all online platform</p>
+  {% if user.is_authenticated == False %}
+  <a href="{% url 'register' %}"><button class="btn btn-dark">Sign up</button></a>
+  {% endif %}
 </div>
 
 <hr>
