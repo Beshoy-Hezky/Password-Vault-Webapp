@@ -18,6 +18,11 @@ def about_us(request):
     return render(request, "vault/aboutus.html")
 
 
+def add_password(request):
+    if request.method == "GET":
+        return render(request, "vault/addpassword.html")
+
+
 def login_after_register(request):
     login(request, request.user)
     return HttpResponseRedirect(reverse("index"))
