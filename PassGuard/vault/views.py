@@ -7,9 +7,14 @@ from .models import User
 
 
 def index(request):
+    if request.user.is_authenticated:
+        return render(request, "vault/mainuserpage.html")
+    else:
+        return render(request, "vault/aboutus.html")
+
+
+def about_us(request):
     return render(request, "vault/aboutus.html")
-
-
 def login_view(request):
     if request.method == "POST":
         # Attempt to sign user in
