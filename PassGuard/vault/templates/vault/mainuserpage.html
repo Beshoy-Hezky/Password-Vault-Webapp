@@ -3,30 +3,22 @@
 {% load static %}
 
     <div style="margin: 25px;">
+<label>Your Master-key:</label>
+    <input type="text" maxlength="100" name="masterkey" class="form-control" id="exampleFormControlInput1" placeholder="Inserting the wrong masterkey will result in wrong password" >
         <h1 class="title" style="font-size: 35px;">{{request.user.username}}'s passwords:</h1>
 <div class="card-deck">
 
-
-<div class="card" >
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <h6 class="card-subtitle mb-2 text-muted">www.gmail.com</h6>
-    <p class="card-text">WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
-    </p>
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
-  </div>
-</div>
-
+    {% for password in passwords %}
     <div class="card" >
   <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-    <p class="card-text">Some quick example text to build on the card title d's content.</p>
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
+    <div style="display: none" class="id">{{password.id}}</div>
+    <h5 class="card-title">{{password.title}}</h5><hr style="margin-bottom: 9px; margin-top: -5px;">
+    <h6 class="card-subtitle mb-2 text-muted">{{password.website}}</h6>
+    <p class="card-text">{{password.notes}}</p>
+    <button type="button" class="btn btn-link">Reveal Password</button>
   </div>
 </div>
+    {%endfor%}
 
         <a href="{% url 'add_password' %}" class="card" style="max-width: 18rem; display: inline-block">
   <div class="card-body" style="text-align: center">
