@@ -7,7 +7,7 @@ class User(AbstractUser):
 
 
 class password(models.Model):
-    hashed_password = models.CharField(max_length=200)
+    hashed_password = models.CharField(max_length=200, default="hello")
     title = models.CharField(max_length=32)
     website = models.CharField(max_length=32)
     notes = models.CharField(max_length=150)
