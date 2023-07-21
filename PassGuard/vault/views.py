@@ -4,12 +4,15 @@ from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
-from .models import User
+from .models import User, password
 
 
 def index(request):
     if request.user.is_authenticated:
-        return render(request, "vault/mainuserpage.html")
+        passwords = password.objects.filter(owner=request.user)
+        return render(request, "vault/mainuserpage.html",{
+            "passwords": passwords
+        })
     else:
         return render(request, "vault/aboutus.html")
 
@@ -22,10 +25,26 @@ def add_password(request):
     if request.method == "GET":
         return render(request, "vault/addpassword.html")
 
+    if request.method == "POST":
+        title = request.POST["title"]
+        website = request.POST["website"]
+        masterkey = request.POST["masterkey"]
+        notes = request.POST["description"]
+        thepassword = request.POST["password"]
+        #change string of master-key to bytes
+        masterkey_bytes = masterkey.encode('utf-8')
+        #Make the fernet object using that master-key in bytes
+        fernet = Fernet(masterkey_bytes)
+        encrypted_password = fernet.encrypt(thepassword.encode())
 
-def login_after_register(request):
-    login(request, request.user)
-    return HttpResponseRedirect(reverse("index"))
+        apassword = password(
+            title=title,
+            website=website,
+            notes=notes,
+            hashed_password=encrypted_password,
+            owner=request.user)
+        apassword.save()
+        return HttpResponseRedirect(reverse("index"))
 
 
 def login_view(request):
