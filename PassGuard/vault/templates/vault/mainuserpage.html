@@ -5,17 +5,24 @@
     <div style="margin: 25px;">
 <label>Your Master-key:</label>
     <input type="text" maxlength="100" name="masterkey" class="form-control" id="exampleFormControlInput1" placeholder="Inserting the wrong masterkey will result in wrong password" >
-        <h1 class="title" style="font-size: 35px;">{{request.user.username}}'s passwords:</h1>
+        <h1 class="title" style="font-size: 35px; margin-top: 10px;">{{request.user.username}}'s passwords:</h1>
 <div class="card-deck">
 
     {% for password in passwords %}
     <div class="card" >
-  <div class="card-body">
+        <form action="{% url 'delete_password' %}" method="post">
+            {%csrf_token%}
+            <input type="hidden" value="{{password.id}}" name="id">
+        <button type="submit" class="btn btn-outline-danger top-right">Delete</button>
+        </form>
+        <div class="card-password" style="display: none"></div>
+        <button type="submit" class="btn cool-button bottom-left" style="display: none" onclick="copy(this)">Copy</button>
+  <div class="card-body" style="display: block">
     <div style="display: none" class="id">{{password.id}}</div>
     <h5 class="card-title">{{password.title}}</h5><hr style="margin-bottom: 9px; margin-top: -5px;">
     <h6 class="card-subtitle mb-2 text-muted">{{password.website}}</h6>
     <p class="card-text">{{password.notes}}</p>
-    <button type="button" class="btn btn-link">Reveal Password</button>
+    <button type="button" class="btn btn-link bottom-left" onclick="reveal(this)">Reveal Password</button>
   </div>
 </div>
     {%endfor%}

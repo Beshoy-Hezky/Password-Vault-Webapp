@@ -75,6 +75,13 @@ hr{
     transform: translate(-50%, -50%);
 }
 
+.card-password{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .card{
     border-width: 2px;
     max-width: 18rem;
@@ -103,8 +110,15 @@ textarea:focus::placeholder {
     color:transparent;
 }
 
-.btn-link {
+.bottom-left {
     position: absolute;
     bottom: 3px;
     left: 3px;
+  }
+
+.top-right {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    font-size: smaller;
   }
