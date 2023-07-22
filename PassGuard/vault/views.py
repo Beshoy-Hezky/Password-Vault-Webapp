@@ -1,10 +1,11 @@
 from cryptography.fernet import Fernet
 from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from django.urls import reverse
 from .models import User, password
+import json
 
 
 def index(request):
@@ -36,15 +37,35 @@ def add_password(request):
         #Make the fernet object using that master-key in bytes
         fernet = Fernet(masterkey_bytes)
         encrypted_password = fernet.encrypt(thepassword.encode())
-
+        #change to bytes so that decoding later on works
+        encrypted_bytes = encrypted_password.decode('utf-8')
         apassword = password(
             title=title,
             website=website,
             notes=notes,
-            hashed_password=encrypted_password,
+            hashed_password=encrypted_bytes,
             owner=request.user)
         apassword.save()
         return HttpResponseRedirect(reverse("index"))
+
+
+def delete_password(request):
+    if request.method == "POST":
+        id = request.POST["id"]
+        password.objects.get(id=id).delete()
+        return HttpResponseRedirect(reverse("index"))
+
+
+def reveal(request, id):
+    if request.method == "POST":
+        info = json.loads(request.body)
+        masterkey = info["masterkey"]
+        encrypted_password = password.objects.get(id=id).hashed_password
+        # Master-key in bytes
+        bytes_data = masterkey.encode('utf-8')
+        fernet = Fernet(bytes_data)
+        decrypted_password = fernet.decrypt(encrypted_password).decode()
+        return JsonResponse({"password": decrypted_password})
 
 
 def login_view(request):
