@@ -6,7 +6,7 @@
   <p class="about-us">Our solution to empower individuals and businesses to take control of their online security
     by providing a secure and user-friendly password management solution. We aim to simplify the
     process of password management, enhance data privacy, and promote strong security practices
-    to safeguard sensitive information across all online platform</p>
+    to safeguard sensitive information across all online platform. Our solution prioritizes your online security by storing the encryption key with you, and not in our database. Therefore, databases are populated with encrypted passwords and not your actual passwords. So your data is in your control at all time. (Read more below)</p>
   {% if user.is_authenticated == False %}
   <a href="{% url 'register' %}"><button class="btn btn-dark">Sign up</button></a>
   {% endif %}
@@ -20,14 +20,14 @@
 
 At PassGuard, our mission is to empower individuals and businesses to take control of their online security. We understand the importance of protecting sensitive information and maintaining privacy in the digital age. That's why we have developed a robust password management platform that combines advanced encryption techniques with user-friendly features.
 
-Security is at the core of PassGuard. We utilize asymmetric-key encryption, a highly secure encryption method, to keep your passwords safe. This encryption technique uses a pair of keys – a public key and a private key. The public key is used to encrypt the passwords, while the private key, which only you have access to, is used to decrypt them. This means that even if the encrypted passwords are intercepted, they remain unintelligible without the private key, providing an added layer of protection.
+Security is at the core of PassGuard. We make it the responsibility of the user to store their individual master-key. Once the user registers he will be given a master-key (which is the encryption key). The user is recommended to store it offline on a notepad document or in a physical copy. This increases the protection by alot as even if the database was intercepted all that would be found are some encrypted passwords therefore this adds a layer of protection.
 
-We believe in making password management simple and hassle-free. With PassGuard, you can securely store, organize, and access your passwords from any device. Generate strong and unique passwords, easily autofill login forms, and seamlessly synchronize your data across multiple platforms.
+We believe in making password management simple and hassle-free. With PassGuard, you can securely store, organize, and access your passwords from any device. Generate strong and unique passwords and seamlessly synchronize your data across multiple platforms.
 
-At PassGuard, we are committed to maintaining the highest standards of security and privacy. We employ industry-leading measures to safeguard your data, including encryption at rest and in transit, regular security audits, and strict access controls. Your trust and satisfaction are our top priorities.
+At PassGuard, we are committed to maintaining the highest standards of security and privacy. Your trust and satisfaction are our top priorities.
 
 Join us on our mission to strengthen your online security and simplify your password management. Experience the peace of mind that comes with knowing your passwords are safe, while enjoying the convenience of accessing them whenever and wherever you need.
 
-Start using PassGuard today and take control of your digital security journey!</p>
+Start using PassGuard for free today and take control of your digital security journey!</p>
 </div>
 {% endblock %}
