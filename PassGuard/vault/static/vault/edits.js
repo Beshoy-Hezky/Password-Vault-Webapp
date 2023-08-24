@@ -42,12 +42,20 @@ function revealdata(div, id ,master_key){
         })
     }).then(response => response.json())
         .then(result => {
+
             const password = result["password"]
-            div.parentElement.parentElement.querySelector(".card-password").innerHTML = `${password}`;
-            div.parentElement.parentElement.querySelector(".card-password").style.display="block";
-            div.parentElement.parentElement.querySelector(".card-body").style.display="none";
-            div.parentElement.parentElement.querySelector(".cool-button").style.display="block";
-        })
+             // Log the password variable to the console
+        console.log("Password:", password);
+            if(password === 'There is an error in the program'){
+                alert("Wrong Master-key");
+            }
+            else {
+                div.parentElement.parentElement.querySelector(".card-password").innerHTML = `${password}`;
+                div.parentElement.parentElement.querySelector(".card-password").style.display = "block";
+                div.parentElement.parentElement.querySelector(".card-body").style.display = "none";
+                div.parentElement.parentElement.querySelector(".cool-button").style.display = "block";
+            }
+        });
 
 }
 
@@ -61,6 +69,7 @@ function reveal(div){
         const id = div.parentElement.querySelector(".id").innerHTML;
         //const person_id = div.parentElement.querySelector(".person-id").innerHTML;
         const master_key = document.querySelector(".form-control").value;
-        revealdata(div, id,master_key)
+        revealdata(div, id, master_key);
+
     }
 }

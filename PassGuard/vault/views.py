@@ -63,8 +63,16 @@ def reveal(request, id):
         encrypted_password = password.objects.get(id=id).hashed_password
         # Master-key in bytes
         bytes_data = masterkey.encode('utf-8')
-        fernet = Fernet(bytes_data)
-        decrypted_password = fernet.decrypt(encrypted_password).decode()
+        # if masterkey is short
+        try:
+            fernet = Fernet(bytes_data)
+        except ValueError:
+            return JsonResponse({"password": "There is an error in the program"})
+        # if masterkey is wrong invalid token gets raised by library
+        try:
+            decrypted_password = fernet.decrypt(encrypted_password).decode()
+        except:
+            decrypted_password = 'There is an error in the program'
         return JsonResponse({"password": decrypted_password})
 
 
